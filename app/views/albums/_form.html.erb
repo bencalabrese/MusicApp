@@ -1,0 +1,43 @@
+<form action="<%= action %>" method="post">
+  <input type="hidden"
+         name="_method"
+         value="<%= method %>">
+
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <label for="album_name">Name</label>
+  <input type="text"
+         name="album[name]"
+         id="album_name"
+         value="<%= @album.name %>">
+
+  </br>
+
+  <label for="album_recording_style">Recording Style</label>
+  <% Album::RECORDING_STYLES.each do |style| %>
+    <input type="radio"
+           name="album[recording_style]"
+           id="<%= style %>"
+           value="<%= style %>"
+           <%= "checked" if style == @album.recording_style %>>
+    <label for="<%= style %>"><%= style %></label>
+  <% end %>
+
+  </br>
+
+  <label for="album_band_id">Band</label>
+    <select name="album[band_id]"
+            id="album_band_id">
+      <% Band.all.each do |band| %>
+        <option value="<%= band.id %>"
+                <%= "selected" if @album.band == band %>>
+          <%= band.name %>
+        </option>
+      <% end %>
+    </select>
+
+  </br>
+  <input type="submit" value="Submit">
+</form>
