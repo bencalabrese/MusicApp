@@ -15,6 +15,8 @@ class Album < ActiveRecord::Base
 
   validates :name, :recording_style, :band_id, presence: true
   validates :recording_style, inclusion: RECORDING_STYLES
-  
+
   belongs_to :band, dependent: :destroy
+
+  has_many :tracks
 end
