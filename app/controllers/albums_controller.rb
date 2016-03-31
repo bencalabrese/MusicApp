@@ -1,9 +1,4 @@
 class AlbumsController < ApplicationController
-  def index
-    @albums = Album.all
-    render :index
-  end
-
   def create
     @album = Album.new(album_params)
 
