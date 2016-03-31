@@ -11,7 +11,7 @@
   <input type="text"
          name="album[name]"
          id="album_name"
-         value="<%= @album.name %>">
+         value="<%= album.name %>">
 
   </br>
 
@@ -21,7 +21,7 @@
            name="album[recording_style]"
            id="<%= style %>"
            value="<%= style %>"
-           <%= "checked" if style == @album.recording_style %>>
+           <%= "checked" if style == album.recording_style %>>
     <label for="<%= style %>"><%= style %></label>
   <% end %>
 
@@ -32,7 +32,7 @@
             id="album_band_id">
       <% Band.all.each do |band| %>
         <option value="<%= band.id %>"
-                <%= "selected" if @album.band == band %>>
+                <%= "selected" if album.band == band %>>
           <%= band.name %>
         </option>
       <% end %>
