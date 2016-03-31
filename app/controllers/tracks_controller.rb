@@ -1,4 +1,6 @@
 class TracksController < ApplicationController
+  before_action :ensure_login
+
   def create
     @track = Track.new(track_params)
 

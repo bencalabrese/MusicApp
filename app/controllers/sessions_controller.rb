@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if @user
       login!(@user)
-      redirect_to user_url(@user)
+      redirect_to bands_url(@user)
     else
       @user = User.new
       render :new

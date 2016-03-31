@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :ensure_login
+  
   def create
     @album = Album.new(album_params)
 
