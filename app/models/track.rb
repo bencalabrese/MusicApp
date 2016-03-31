@@ -16,6 +16,7 @@ class Track < ActiveRecord::Base
 
   validates :album_id, :name, :track_style, :lyrics, presence: true
   validates :track_style, inclusion: TRACK_STYLES
-  
+
   belongs_to :album
+  has_many :notes
 end
