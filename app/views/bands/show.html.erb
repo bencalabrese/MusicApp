@@ -1,0 +1,7 @@
+<h1><%= @band.name %></h1>
+
+<%= link_to "Edit #{@band.name}", edit_band_url(@band) %>
+<%= button_to "Delete #{@band.name}",
+    band_url(@band),
+    method: :delete %>
+<%= link_to "See all bands", bands_url %>
