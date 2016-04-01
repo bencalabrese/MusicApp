@@ -29,8 +29,6 @@
 </form>
 
 
-<%= link_to "Make a note about #{@track.name}",
-    new_track_note_url(@track.id) %></br>
 <%= link_to "Edit #{@track.name}", edit_track_url(@track) %>
 <%= button_to "Delete #{@track.name}",
     track_url(@track),
