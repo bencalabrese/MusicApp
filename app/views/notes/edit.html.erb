@@ -1,0 +1,3 @@
+<h1>Edit note on <%= @note.track.name %></h1>
+
+<%= render "form", note: @note, action: note_url, method: :patch %>

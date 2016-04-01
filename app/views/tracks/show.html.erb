@@ -1,5 +1,17 @@
 <h1><%= @track.name %></h1>
 
+<p>Track Style: <%= @track.track_style %></p>
+<p>Lyrics: <%= @track.lyrics %></p>
+</br>
+
+<% unless @track.notes.empty? %>
+  <ul>
+    <%= render @track.notes %>
+  </ul>
+<% end %>
+
+<%= link_to "Make a note about #{@track.name}",
+    new_track_note_url(@track.id) %></br>
 <%= link_to "Edit #{@track.name}", edit_track_url(@track) %>
 <%= button_to "Delete #{@track.name}",
     track_url(@track),
