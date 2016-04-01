@@ -1,3 +1,5 @@
+<%= display_errors(user) %>
+
 <form method="post" action="<%= action %>">
   <input type="hidden"
          name="authenticity_token"
@@ -7,15 +9,14 @@
   <input type="text"
          name="user[email]"
          id="user_email"
-         value="<%= @user.email %>">
+         value="<%= user.email %>">
 
   </br>
 
   <label for="user_password">Password</label>
   <input type="password"
          name="user[password]"
-         id="user_password"
-         value="<%= @user.password %>">
+         id="user_password">
 
   </br>
 

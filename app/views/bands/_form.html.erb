@@ -1,3 +1,5 @@
+<%= display_errors(band) %>
+
 <form action="<%= action %>" method="post">
   <input type="hidden"
          name="_method"
@@ -11,7 +13,7 @@
   <input type="text"
          name="band[name]"
          id="band_name"
-         value="<%= @band.name %>">
+         value="<%= band.name %>">
 
   </br>
   <input type="submit" value="Submit">

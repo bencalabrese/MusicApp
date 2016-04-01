@@ -14,7 +14,8 @@ class SessionsController < ApplicationController
       login!(@user)
       redirect_to bands_url(@user)
     else
-      @user = User.new
+      @user = User.new(email: params[:user][:email])
+      @user.errors[:base] << "Invalid credentials"
       render :new
     end
   end
