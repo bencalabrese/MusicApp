@@ -1,29 +1,11 @@
 class NotesController < ApplicationController
   before_action :ensure_login
+  before_action :only_owner_can_change, only: :destroy
 
   def create
     @note = Note.new(note_params)
     @note.user = current_user
     @note.save
-
-    redirect_to track_url(@note.track)
-  end
-
-  def new
-    @note = Note.new
-    @note.track = Track.find(params[:track_id])
-
-    render :new
-  end
-
-  def edit
-    @note = Note.find(params[:id])
-    render :edit
-  end
-
-  def update
-    @note = Note.find(params[:id])
-    @note.update(note_params)
 
     redirect_to track_url(@note.track)
   end
@@ -41,5 +23,11 @@ class NotesController < ApplicationController
       :user_id,
       :track_id,
       :message)
+  end
+
+  def only_owner_can_change
+    if current_user.notes.find(params[:id]).nil?
+      render text: "You can't edit that note", status: 403
+    end
   end
 end

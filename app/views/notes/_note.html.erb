@@ -1,4 +1,7 @@
 <li>
   <p><%= note.user.email %> wrote:</p>
   <p><%= note.message %></p>
+  <% if current_user == note.user %>
+    <%= button_to "Remove this note", note_url(note), method: :delete %>
+  <% end %>
 </li>

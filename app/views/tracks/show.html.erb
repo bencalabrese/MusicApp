@@ -10,6 +10,25 @@
   </ul>
 <% end %>
 
+<p>Create new note on <%= @track.name %></p>
+<form action="<%= notes_url %>" method="post">
+  <input type="hidden"
+         name="authenticity_token"
+         value="<%= form_authenticity_token %>">
+
+  <input type="hidden"
+         name="note[track_id]"
+         value="<%= @track.id %>">
+
+  <label for="note_message">Message</label>
+  <textarea name="note[message]"
+            id="note_message"></textarea>
+
+  </br>
+  <input type="submit" value="Submit">
+</form>
+
+
 <%= link_to "Make a note about #{@track.name}",
     new_track_note_url(@track.id) %></br>
 <%= link_to "Edit #{@track.name}", edit_track_url(@track) %>
