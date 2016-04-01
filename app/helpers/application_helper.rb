@@ -1,12 +1,8 @@
 module ApplicationHelper
   def ugly_lyrics(lyrics)
-    lines = lyrics.split("\n")
-
-    html = "<pre>"
-    lines.each do |line|
-      html += "&#x2603 " + h(line)
-    end
-    html += "</pre>"
+    lines = h(lyrics).split("\n")
+    lines.map! { |line| "&#x2603 " + line }
+    html = "<pre>#{lines.join("\n")}</pre>"
 
     html.html_safe
   end
